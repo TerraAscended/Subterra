@@ -31,6 +31,14 @@
 	sellprice = 30
 
 
+/obj/item/rogueweapon/huntingknife/villager
+	force = 7//lowest tier thingie
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
+	name = "small knife"
+	desc = "The loyal companion of simple peasants, able to cut hard bread and carve wood. A versatile kitchen utensil and tool."
+	icon_state = "villagernife"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
 
 /datum/intent/dagger
 	clickcd = 8
@@ -386,7 +394,6 @@
 	desc = "A dagger of an older design, the copper serves decent enough."
 	icon_state = "cdagger"
 	icon = 'icons/roguetown/weapons/32.dmi'
-	item_state = "bone_dagger"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	gripsprite = FALSE

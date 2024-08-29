@@ -18,7 +18,7 @@
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	blocksound = SOFTHIT
 	body_parts_covered = NECK|HAIR|EARS|HEAD
-	armor = list("melee" = 30, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 40, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
@@ -27,6 +27,20 @@
 	anvilrepair = null
 	resistance_flags = FLAMMABLE // Made of leather
 	smeltresult = /obj/item/ash
+
+/obj/item/clothing/neck/roguetown/coif/cloth
+	name = "padded coif"
+	desc = "A simple coif made of cloth. Not very effective armor, but may soften weak blows and keeps the head and neck warm."
+	icon_state = "ccoif"
+	item_state = "ccoif"
+	flags_inv = HIDEEARS|HIDEHAIR
+	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
+	blocksound = SOFTHIT
+	body_parts_covered = NECK|HAIR|EARS|HEAD
+	armor = list("melee" = 30, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
 
 /obj/item/clothing/neck/roguetown/coif/AdjustClothes(mob/user)
 	if(loc == user)
@@ -128,14 +142,20 @@
 	blocksound = PLATEHIT
 	smeltresult = /obj/item/ingot/iron
 
-/obj/item/clothing/neck/roguetown/gorget/hoplite // Better than an iron gorget, not quite as good as a steel bervor
-	name = "ancient gorget"
-	desc = "A heavy collar of bronze alloy, meant to protect the neck."
-	icon_state = "aasimarneck"
-	item_state = "aasimarneck"
-	armor = list("melee" = 90, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	max_integrity = 250
-	smeltresult = null // No bronze ingots yet
+/obj/item/clothing/neck/roguetown/gorget/copper
+	name = "copper gorget"
+	icon_state = "copperneck"
+	desc = "An antique and simple protection for the neck, used more as an accessory by the common folk. But poor protection is still better than nothing."
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 100
+
+/obj/item/clothing/neck/roguetown/gorget/bronze
+	name = "bronze gorget"
+	icon_state = "bronzeneck"
+	desc = "An ancient form of neck protection, now used as a luxury accessory."
+	flags_inv = HIDEFACIALHAIR
+	armor = list("melee" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 150
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"
@@ -270,3 +290,13 @@
 	icon_state = "surgcollar"
 	item_state = "surgcollar"
 	sellprice = 15
+
+/obj/item/clothing/neck/roguetown/gorget/hoplite // Better than an iron gorget, not quite as good as a steel bervor
+	name = "ancient gorget"
+	desc = "A heavy collar of bronze alloy, meant to protect the neck."
+	icon_state = "aasimarneck"
+	item_state = "aasimarneck"
+	armor = list("melee" = 90, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 250
+	smeltresult = /obj/item/ingot/bronze // No bronze ingots yet//the most expensive way to find bronze now
+

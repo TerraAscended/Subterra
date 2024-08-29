@@ -44,6 +44,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/roguekey/manor
+		beltl =/obj/item/rogueweapon/huntingknife/villager
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 
@@ -54,3 +55,4 @@
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/roguekey/manor
+		beltl =/obj/item/rogueweapon/huntingknife/villager

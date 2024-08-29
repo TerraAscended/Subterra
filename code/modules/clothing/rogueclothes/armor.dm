@@ -140,6 +140,24 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	sellprice = 40
 
+/obj/item/clothing/suit/roguetown/armor/plate/half/copperchest
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "copper heart protector"//SHITTY ARMOR SHITTY ARMOR!!
+	desc = "Very simple and crude protection for the chest. Ancient fighters once used similar gear, with better quality..."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "copperchest"
+	item_state = "copperchest"
+	armor = list("melee" = 50, "bullet" = 80, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = ALL_RACES_LIST
+	nodismemsleeves = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 100
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/copper
+	armor_class = ARMOR_CLASS_LIGHT
+	sellprice = 40
+
 /obj/item/clothing/suit/roguetown/armor/plate/full
 	name = "plate armor"
 	desc = "Full plate. Leg protecting tassets, groin cup, armored vambraces."
