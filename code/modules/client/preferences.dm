@@ -2182,11 +2182,10 @@ Slots: [job.spawn_positions]</span>
 					else
 						domhand = 1
 				if("family")
-					var/new_family = input(user, "Do you have relatives in rockhill? [FAMILY_NONE] will disable \
-						this feature and prevent the species of your parents determining your species as prince. \
-						[FAMILY_PARTIAL] will assign a random player as your parent based on your species. \
-						[FAMILY_FULL] will assign you as a single parent to a random player if possible. \
-						NOTE: Jobs such as prince and grand mage will be excluded from being a parent.", "Life is Rough in Rockhill") as null|anything in list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_FULL)
+					var/new_family = input(user, "Do you have relatives in rockhill? [FAMILY_NONE] will disable this feature. \
+						[FAMILY_PARTIAL] will assign you as a progeny of a local house based on your species. This feature is disabled if your older than ADULT. \
+						[FAMILY_FULL] will attempt to assign you as matriarch or patriarch of one of the local houses of rockhill. \
+						If all houses are full then you will not be assigned to any house.", "The Major Houses of Rockhill") as null|anything in list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_FULL)
 					if(new_family)
 						family = new_family
 				if("alignment")

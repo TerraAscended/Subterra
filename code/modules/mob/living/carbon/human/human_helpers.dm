@@ -209,3 +209,36 @@
 			return 30
 
 	return damage
+
+/*
+* Family Tree subsystem helpers
+* I was tired of editing indvidual values
+* across fluff.dm and death.dm so im simplifying
+* the process. They check with these procs that
+* i can edit from here. -IP
+*/
+/mob/living/carbon/human/proc/RomanticPartner(mob/living/carbon/human/H)
+	if(!ishuman(H))
+		return
+	if(spouse_name == H.real_name)
+		return TRUE
+
+/mob/living/carbon/human/proc/IsWedded(mob/living/carbon/human/wedder)
+	if(spouse_name)
+		return TRUE
+
+/mob/living/carbon/human/proc/MarryTo(mob/living/carbon/human/spouse)
+	if(!ishuman(spouse))
+		return
+	spouse_name = spouse.real_name
+	spouse.spouse_name = spouse_name
+
+//Perspective stranger looks at --> src
+/mob/living/carbon/human/proc/ReturnRelation(mob/living/carbon/human/stranger)
+	if(!ishuman(stranger))
+		return
+	if(!family_datum)
+		return
+	if(family_datum != stranger.family_datum)
+		return
+	return family_datum.ReturnRelation(src, stranger)
