@@ -106,7 +106,10 @@
 	var/advjob = null
 	var/canseebandits = FALSE
 
-	var/marriedto
+	//Familytree datum
+	var/spouse_name
+	var/familytree_pref = FAMILY_NONE
+	var/datum/heritage/family_datum
 
 	var/has_stubble = TRUE
 

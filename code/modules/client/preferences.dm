@@ -135,6 +135,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/alignment = ALIGNMENT_TN
 	var/datum/charflaw/charflaw
 
+	//Family system
 	var/family = FAMILY_NONE
 
 	var/crt = FALSE
@@ -323,7 +324,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
 
 			if(AGE_IMMORTAL in pref_species.possible_ages)
-				dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[AGE_IMMORTAL]</a><BR>"				
+				dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[AGE_IMMORTAL]</a><BR>"
 			else
 				dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
@@ -337,7 +338,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-//			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
+			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family]</a><BR>"
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
 /*
@@ -2181,9 +2182,12 @@ Slots: [job.spawn_positions]</span>
 					else
 						domhand = 1
 				if("family")
-					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
-					to_chat(user, "<font color='red'>[pick(loly)]</font>")
-					return
+					var/new_family = input(user, "Do you have relatives in rockhill? [FAMILY_NONE] will disable this feature. \
+						[FAMILY_PARTIAL] will assign you as a progeny of a local house based on your species. This feature is disabled if your older than ADULT. \
+						[FAMILY_FULL] will attempt to assign you as matriarch or patriarch of one of the local houses of rockhill. \
+						If all houses are full then you will not be assigned to any house.", "The Major Houses of Rockhill") as null|anything in list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_FULL)
+					if(new_family)
+						family = new_family
 				if("alignment")
 ///					to_chat(user, "<font color='puple'>Alignment is how you communicate to the Game Masters if your character follows a certain set of behavior restrictions. This allows you to </font>")
 					var/new_alignment = input(user, "Alignment is how you communicate to the Game Masters and other players the intent of your character. Your character will be under less administrative scrutiny for evil actions if you choose evil alignments, but you will experience subtle disadvantages. Alignment is overwritten for antagonists.", "Alignment") as null|anything in ALL_ALIGNMENTS_LIST
@@ -2520,6 +2524,8 @@ Slots: [job.spawn_positions]</span>
 		character.update_body()
 		character.update_hair()
 		character.update_body_parts(redraw = TRUE)
+
+	character.familytree_pref = family
 
 /datum/preferences/proc/get_default_name(name_id)
 	switch(name_id)
