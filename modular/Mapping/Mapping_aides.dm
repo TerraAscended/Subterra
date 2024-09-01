@@ -590,6 +590,14 @@
 	density = FALSE
 	pixel_y = 24
 
+/obj/structure/fluff/walldeco/skullspike // for ground really
+	icon = 'modular/Mapping/icons/decoration.dmi'
+	icon_state = "skullspike"
+	plane = -1
+	layer = ABOVE_MOB_LAYER
+	pixel_x = 8
+	pixel_y = 24
+
 /*	..................   Red brick Walls   ................... */
 /turf/closed/wall/mineral/rogue/stonebrick/reddish
 	color = "#e0b7af"
@@ -774,6 +782,12 @@
 /area/rogue/indoors/vampire_manor
 	name = "lair (Vampire Lord)"
 
+/area/rogue/outdoors/bog/inhumen_camp
+	name = "lair (Inhumen)"
+	droning_sound = 'sound/music/area/decap.ogg'
+	first_time_text = "THE DEEP BOG"
+
+
 /*	..................   Floors   ................... */
 /turf/open/floor/rogue/ruinedwood/darker
 	color = "#d9c9b0"
@@ -784,3 +798,33 @@
 // Temp to avoid conflicts
 /obj/item/cooking/pot
 
+/*	..................   Traveltiles   ................... */ // these are the ones on centcomm, where the actual lair is
+/obj/structure/fluff/traveltile/bandit_lair
+	aportalid = "banditin"
+	aportalgoesto = "banditexit"
+
+/obj/structure/fluff/traveltile/vampire_lair
+	aportalid = "vampin"
+	aportalgoesto = "vampexit"
+
+/obj/structure/fluff/traveltile/inhumen_lair
+	aportalid = "inhumenin"
+	aportalgoesto = "inhumenexit"
+
+
+/obj/structure/fluff/traveltile/to_inhumen_tribe
+	name = "to the Deep Bog"
+	aportalid = "inhumenexit"
+	aportalgoesto = "inhumenin"
+
+// temp
+/obj/item/reagent_containers/powder/spice
+	name = "spice"
+	desc = ""
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "spice"
+	item_state = "spice"
+	possible_transfer_amounts = list()
+	volume = 15
+	list_reagents = list(/datum/reagent/druqks = 15)
+	sellprice = 10
