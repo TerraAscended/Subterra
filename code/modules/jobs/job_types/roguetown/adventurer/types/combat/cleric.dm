@@ -22,8 +22,6 @@
 
 /datum/outfit/job/roguetown/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
-
 	cloak = /obj/item/clothing/cloak/tabard/crusader // Give us a generic crusade tabard, or one based on our chosen diety...
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata // Give us an Astrata psicross, or one based on our chosen diety...
 	switch(H.patron?.name)

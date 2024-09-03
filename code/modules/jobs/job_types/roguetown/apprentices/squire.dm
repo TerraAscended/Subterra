@@ -45,9 +45,7 @@
 		return
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-
-	H.virginity = TRUE
-
+	
 	H.change_stat("perception", 1)
 	H.change_stat("constitution", 1)
 	H.change_stat("speed", 1)

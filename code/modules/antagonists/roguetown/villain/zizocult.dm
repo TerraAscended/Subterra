@@ -955,10 +955,6 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			if(RULER != SSticker.rulermob && RULER.stat != DEAD)
 				break
 			RULER.gib()
-		for(var/mob/living/carbon/human/VIRGIN in get_step(src, SOUTH))
-			if(!VIRGIN.virginity && VIRGIN.stat != DEAD)
-				break
-			VIRGIN.gib()
 		CM.cultascended = TRUE
 		addomen("ascend")
 		to_chat(user.mind, "<span class='userdanger'>I HAVE DONE IT! I HAVE REACHED A HIGHER FORM! SOON THERE WILL BE NO GODS. ONLY MASTERS!</span>")

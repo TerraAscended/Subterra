@@ -33,7 +33,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/niteman
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		head = /obj/item/clothing/head/roguetown/niteman
-	H.virginity = TRUE
+
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/keyring/archivist

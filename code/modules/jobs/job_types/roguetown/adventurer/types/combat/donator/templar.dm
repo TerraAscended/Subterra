@@ -16,8 +16,6 @@
 
 /datum/outfit/job/roguetown/adventurer/templar/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
-
 	switch(H.patron?.name)
 		if("Astrata")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
