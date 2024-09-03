@@ -25,7 +25,7 @@
 
 /mob/living/carbon/human/species/orc/ambush/after_creation()
 	..()
-	job = "Ambush Orc
+	job = "Ambush Orc"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
