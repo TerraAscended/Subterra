@@ -385,7 +385,6 @@
 	var/depleted
 /obj/structure/circle_protection/attack_hand(mob/user)
 	. = ..()
-	var/mob/living/carbon/human/H = user
 	if(depleted)
 		to_chat(user, "<span class='notice'>The salt circle has been damaged...</span>")
 		return
@@ -402,7 +401,6 @@
 
 	depleted = TRUE
 	alpha = 90
-	ELSE
 
 /obj/structure/circle_protection/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/powder/salt))
@@ -427,7 +425,6 @@
 	var/last_scry
 /obj/structure/nocdevice/attack_hand(mob/user)
 	. = ..()
-	var/mob/living/carbon/human/H = user
 	if(world.time < last_scry + 30 SECONDS)
 		to_chat(user, "<span class='warning'>I peer into the sky but cannot focus the lens on the face of Noc. Maybe I should wait.</span>")
 		return
