@@ -64,9 +64,6 @@
 
 	update_sneak_invis()
 	handle_fire()
-
-	if(sexcon)
-		sexcon.handle_sex()
 	if(machine)
 		machine.check_eye(src)
 

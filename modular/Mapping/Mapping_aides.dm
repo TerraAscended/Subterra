@@ -385,26 +385,23 @@
 	var/depleted
 /obj/structure/circle_protection/attack_hand(mob/user)
 	. = ..()
-	var/mob/living/carbon/human/H = user
 	if(depleted)
 		to_chat(user, "<span class='notice'>The salt circle has been damaged...</span>")
 		return
-	if(H.virginity)
-		playsound(get_turf(user), 'sound/magic/timestop.ogg', 100, TRUE, -1)
-		new wall_type(get_step(src, EAST),user)
-		new wall_type(get_step(src, WEST),user)
-		new wall_type(get_step(src, NORTH),user)
-		new wall_type(get_step(src, SOUTH),user)
+	playsound(get_turf(user), 'sound/magic/timestop.ogg', 100, TRUE, -1)
+	new wall_type(get_step(src, EAST),user)
+	new wall_type(get_step(src, WEST),user)
+	new wall_type(get_step(src, NORTH),user)
+	new wall_type(get_step(src, SOUTH),user)
 
-		new wall_type(get_step(src, NORTHEAST),user)
-		new wall_type(get_step(src, NORTHWEST),user)
-		new wall_type(get_step(src, SOUTHEAST),user)
-		new wall_type(get_step(src, SOUTHWEST),user)
+	new wall_type(get_step(src, NORTHEAST),user)
+	new wall_type(get_step(src, NORTHWEST),user)
+	new wall_type(get_step(src, SOUTHEAST),user)
+	new wall_type(get_step(src, SOUTHWEST),user)
 
-		depleted = TRUE
-		alpha = 90
-	else
-		to_chat(user, "<span class='notice'>The magick forces are beyond your control.</span>")
+	depleted = TRUE
+	alpha = 90
+
 /obj/structure/circle_protection/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/powder/salt))
 		to_chat(user, "<span class='notice'>Restoring the salt lines...</span>")
@@ -428,49 +425,45 @@
 	var/last_scry
 /obj/structure/nocdevice/attack_hand(mob/user)
 	. = ..()
-	var/mob/living/carbon/human/H = user
-	if(H.virginity)
-		if(world.time < last_scry + 30 SECONDS)
-			to_chat(user, "<span class='warning'>I peer into the sky but cannot focus the lens on the face of Noc. Maybe I should wait.</span>")
-			return
-		var/input = stripped_input(user, "Who are you looking for?", "Scrying Orb")
-		if(!input)
-			return
-		if(!user.key)
-			return
-		if(world.time < last_scry + 30 SECONDS)
-			to_chat(user, "<span class='warning'>I peer into the sky but cannot focus the lens on the face of Noc. Maybe I should wait.</span>")
-			return
-		if(!user.mind || !user.mind.do_i_know(name=input))
-			to_chat(user, "<span class='warning'>I don't know anyone by that name.</span>")
-			return
-		for(var/mob/living/carbon/human/HL in GLOB.human_list)
-			if(HL.real_name == input)
-				var/turf/T = get_turf(HL)
-				if(!T)
-					continue
-				var/mob/dead/observer/screye/S = user.scry_ghost()
-				if(!S)
-					return
-				S.ManualFollow(HL)
-				last_scry = world.time
-				user.visible_message("<span class='danger'>[user] stares into [src], [p_their()] squinting and concentrating...</span>")
-				addtimer(CALLBACK(S, TYPE_PROC_REF(/mob/dead/observer, reenter_corpse)), 8 SECONDS)
-				if(!HL.stat)
-					if(HL.STAPER >= 15)
-						if(HL.mind)
-							if(HL.mind.do_i_know(name=user.real_name))
-								to_chat(HL, "<span class='warning'>I can clearly see the face of [user.real_name] staring at me!.</span>")
-								return
-						to_chat(HL, "<span class='warning'>I can clearly see the face of an unknown [user.gender == FEMALE ? "woman" : "man"] staring at me!</span>")
-						return
-					if(HL.STAPER >= 11)
-						to_chat(HL, "<span class='warning'>I feel a pair of unknown eyes on me.</span>")
-				return
-		to_chat(user, "<span class='warning'>I peer into the viewpiece, but Noc does not reveal where [input] is.</span>")
+	if(world.time < last_scry + 30 SECONDS)
+		to_chat(user, "<span class='warning'>I peer into the sky but cannot focus the lens on the face of Noc. Maybe I should wait.</span>")
 		return
-	else
-		to_chat(user, "<span class='notice'>Noc looks angry with me...</span>")
+	var/input = stripped_input(user, "Who are you looking for?", "Scrying Orb")
+	if(!input)
+		return
+	if(!user.key)
+		return
+	if(world.time < last_scry + 30 SECONDS)
+		to_chat(user, "<span class='warning'>I peer into the sky but cannot focus the lens on the face of Noc. Maybe I should wait.</span>")
+		return
+	if(!user.mind || !user.mind.do_i_know(name=input))
+		to_chat(user, "<span class='warning'>I don't know anyone by that name.</span>")
+		return
+	for(var/mob/living/carbon/human/HL in GLOB.human_list)
+		if(HL.real_name == input)
+			var/turf/T = get_turf(HL)
+			if(!T)
+				continue
+			var/mob/dead/observer/screye/S = user.scry_ghost()
+			if(!S)
+				return
+			S.ManualFollow(HL)
+			last_scry = world.time
+			user.visible_message("<span class='danger'>[user] stares into [src], [p_their()] squinting and concentrating...</span>")
+			addtimer(CALLBACK(S, TYPE_PROC_REF(/mob/dead/observer, reenter_corpse)), 8 SECONDS)
+			if(!HL.stat)
+				if(HL.STAPER >= 15)
+					if(HL.mind)
+						if(HL.mind.do_i_know(name=user.real_name))
+							to_chat(HL, "<span class='warning'>I can clearly see the face of [user.real_name] staring at me!.</span>")
+							return
+					to_chat(HL, "<span class='warning'>I can clearly see the face of an unknown [user.gender == FEMALE ? "woman" : "man"] staring at me!</span>")
+					return
+				if(HL.STAPER >= 11)
+					to_chat(HL, "<span class='warning'>I feel a pair of unknown eyes on me.</span>")
+			return
+	to_chat(user, "<span class='warning'>I peer into the viewpiece, but Noc does not reveal where [input] is.</span>")
+	return
 
 
 /*	..................   Floor decoration   ................... */

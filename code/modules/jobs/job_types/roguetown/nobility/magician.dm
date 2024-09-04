@@ -48,7 +48,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-	H.virginity = TRUE
+
 	H.change_stat("strength", -2)
 	H.change_stat("intelligence", 5)
 	H.change_stat("constitution", -2)
